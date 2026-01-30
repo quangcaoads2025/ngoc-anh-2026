@@ -13,6 +13,50 @@
 <meta property="og:url" content="https://bydthanhcong.vn/wp-content/uploads/2026/01/gen-h-anhbiaquayso.jpg" />
 
   <style>
+  /* --- CSS GIAO DIỆN MỚI CHO FORM --- */
+  .form-group {
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+  }
+  .required-mark {
+    color: #d60000;
+    margin-left: 4px;
+  }
+  .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px; /* Bo tròn giống mẫu */
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .form-control:focus {
+    border-color: #d60000;
+    box-shadow: 0 0 0 3px rgba(214, 0, 0, 0.1);
+  }
+  .form-control::placeholder {
+    color: #999;
+    font-weight: 400;
+  }
+  select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+  }
+
+  /* --- CÁC CSS CŨ GIỮ NGUYÊN --- */
   .popup-toggle-btn {
     position: fixed;
     bottom: 10%;
@@ -45,7 +89,7 @@
   .popup-form {
     background: #ffffff;
     padding: 24px;
-    border-radius: 12px;
+    border-radius: 16px; /* Bo cong hơn xíu */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     max-width: 920px;
     width: 100%;
@@ -92,38 +136,32 @@
     text-align: center;
     font-weight: 700;
   }
-  .popup-form h2 { font-size: 18px; color: #222; margin: 0 0 8px; }
-  .popup-form p { font-size: 14px; color: #d62828; margin: 0 0 16px; }
+  .popup-form h2 { font-size: 18px; color: #d60000; margin: 0 0 8px; text-transform: uppercase; }
+  .popup-form p { font-size: 14px; color: #555; margin: 0 0 20px; font-weight: 500;}
 
-  .popup-form input[type="text"], .popup-form input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: transparent;
-    color: #000;
-    font-size: 15px;
-    font-weight: 500;
-  }
-  .popup-form input::placeholder { color: #111; opacity: 1; }
   .popup-form input[type="checkbox"] { margin-right: 6px; }
-  .popup-form label {
-    font-size: 12px;
+  .popup-form label.checkbox-label {
+    font-size: 13px;
     display: flex;
     align-items: center;
-    margin-top: 6px;
+    margin-top: 10px;
+    color: #555;
+    cursor: pointer;
   }
 
   .popup-form button {
-    background: red;
+    background: #d60000;
     color: white;
     padding: 12px 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
+    transition: background 0.3s;
+  }
+  .popup-form button:hover {
+    background: #b00000;
   }
 
   /* Hàng nút: trái – phải */
@@ -134,14 +172,14 @@
     gap: 12px;
     margin-top: 10px;
   }
-  .popup-form .form-actions #submitBtn{ margin-top: 0; }
+  .popup-form .form-actions #submitBtn{ margin-top: 0; flex: 1; }
   .popup-form .form-actions .dismiss-link{
     margin-left: 0;
-    color: blue;
+    color: #666;
     text-decoration: underline;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     white-space: nowrap;
   }
 
@@ -149,11 +187,13 @@
     position: absolute;
     top: 12px; right: 16px;
     cursor: pointer;
-    font-size: 22px;
-    color: #666;
+    font-size: 24px;
+    color: #999;
     z-index: 10;
     pointer-events: auto;
+    transition: color 0.3s;
   }
+  .close-btn:hover { color: #d60000; }
 
   .site-footer {
     text-align: center;
@@ -231,7 +271,6 @@
   }
 
   /* ===== CỘT PHẢI ===== */
-  /* (FIX) bỏ dòng lỗi ".qcads-rightz" */
   .qcads-right-card{
     background: rgba(255,255,255,0.75);
     border-radius: 12px;
@@ -837,36 +876,6 @@
   letter-spacing:.8px;
   box-shadow:0 10px 22px rgba(0,0,0,.15);
 }
-
-@media (max-width: 768px){
-
-  .NAenvImg{
-    width: 220px !important;
-    max-width: 85% !important;
-    transform: translateY(4px);
-  }
-
-  .NAleftPane{
-    min-height: auto !important;
-    padding: 10px;
-  }
-
-  .NArightPane,
-  .NAenvWrap{
-    min-height: 280px !important;
-  }
-
-  .NAbody{
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .NAactions button{
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-}
-
   </style>
 </head>
 
@@ -884,24 +893,47 @@
         <p>XE NGỌC ANH – UY TÍN - CHẤT LƯỢNG - GIÁ TỐT</p>
 
         <form id="registerForm">
-          <input type="text" name="name" placeholder="Tên của Anh/Chị:*" required />
-          <input type="text" name="phone" placeholder="Số điện thoại:*" required />
-          <input type="text" name="address" placeholder="Địa chỉ liên hệ:*" required />
-          <input type="text" name="car" placeholder="Dòng xe quan tâm:*" required />
-          <select name="note" required style="width:100%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:8px; font-size:15px;">
-            <option value="">Cửa Hàng (Bắt Buộc nhập)</option>
-            <option>Phường 5</option>
-            <option>Phường 6</option>
-            <option>Phường 7</option>
-            <option>Phường 8</option>
-            <option>Thới Bình</option>
-            <option>U Minh</option>
-            <option>Cái Nước</option>
-            <option>Đầm Dơi</option>
-            <option>Trần Văn Thời</option>
-            <option>Năm Căn</option>
-          </select>
-          <label><input type="checkbox" required /> Tôi đồng ý với điều khoản của Xe Ngọc Anh</label>
+          
+          <div class="form-group">
+            <label class="form-label">Họ và tên <span class="required-mark">*</span></label>
+            <input type="text" class="form-control" name="name" placeholder="Nhập Tên VD Nguyễn Văn A" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Số điện thoại <span class="required-mark">*</span></label>
+            <input type="text" class="form-control" name="phone" placeholder="Nhập số điện thoại, VD: 09xxxxxxxx" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Địa chỉ <span class="required-mark">*</span></label>
+            <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ VD: 168, Nguyễn Văn Cừ..." required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Dòng xe quan tâm <span class="required-mark">*</span></label>
+            <input type="text" class="form-control" name="car" placeholder="Nhập dòng xe bạn muốn mua..." required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Cửa hàng <span class="required-mark">*</span></label>
+            <select name="note" class="form-control" required>
+              <option value="">Chọn cửa hàng gần bạn nhất</option>
+              <option value="Phường 5">Phường 5</option>
+              <option value="Phường 6">Phường 6</option>
+              <option value="Phường 7">Phường 7</option>
+              <option value="Phường 8">Phường 8</option>
+              <option value="Thới Bình">Thới Bình</option>
+              <option value="U Minh">U Minh</option>
+              <option value="Cái Nước">Cái Nước</option>
+              <option value="Đầm Dơi">Đầm Dơi</option>
+              <option value="Trần Văn Thời">Trần Văn Thời</option>
+              <option value="Năm Căn">Năm Căn</option>
+            </select>
+          </div>
+          
+          <label class="checkbox-label">
+            <input type="checkbox" required /> Tôi đồng ý với điều khoản của Xe Ngọc Anh
+          </label>
 
           <div class="form-actions">
             <button type="submit" id="submitBtn">ĐĂNG KÝ NGAY</button>
@@ -921,10 +953,10 @@
           <div id="result"></div>
 
           <div id="qcadsFinalBox" style="display:none; margin-top:12px;">
-            <div style="text-align:center; font-weight:900; color:#0a8f4a; font-size:16px;">
-              🎉 Cảm Ơn Anh/Chị <span id="qcadsFinalName" style="color:#0a8f4a;"></span><br/>
-              ĐÃ THAM GIA CHƯƠNG TRÌNH😘
-            </div>
+        <div style="font-family: Arial, sans-serif; text-align:center; font-weight:700; color:#0a8f4a; font-size:16px;">
+          🎉 Cảm Ơn Anh/Chị <span id="qcadsFinalName" style="color:#0a8f4a;"></span><br/>
+          ĐÃ THAM GIA CHƯƠNG TRÌNH😘
+        </div>
 
                       <div class="qcads-code-line">
             MÃ LÌ XÌ LÀ:
@@ -936,7 +968,7 @@
               100.000đ
             </div>
 
-            <div style="margin-top:8px; text-align:center; font-weight:900; color:#000; line-height:1.5;">
+            <div style="font-family: Arial, sans-serif; margin-top:8px; text-align:center; font-weight:700; color:#000; line-height:1.5;">
               ANH CHỊ VUI LÒNG<br/>CHỤP MÀN HÌNH HOẶC
               ĐỌC TÊN + SỐ ĐIỆN THOẠI<br/>KHI NHẬN LÌ XÌ TỪ CỬA HÀNG.
             </div>
@@ -1067,6 +1099,8 @@
 
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script type="text/javascript">
 // LINK API CỦA BẠN (Hãy chắc chắn đây là link deployment mới nhất)
@@ -1591,6 +1625,139 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 } else {
   document.addEventListener('DOMContentLoaded', qcadsBoot);
 }
+</script>
+
+<script type="text/javascript">
+function qcadsHasPopupWidget(el) {
+  while (el && el !== document) {
+    if (el.className && typeof el.className === 'string' && el.className.indexOf('popup-widget') !== -1) return true;
+    el = el.parentNode;
+  }
+  return false;
+}
+var qcadsPopup = document.querySelector('.popup-widget');
+
+document.addEventListener('contextmenu', function (e) {
+  if (qcadsHasPopupWidget(e.target)) e.preventDefault();
+});
+document.addEventListener('keydown', function (e) {
+  if (!qcadsHasPopupWidget(e.target)) return;
+
+  var key = (e.key || '').toLowerCase();
+  var isCtrl = !!e.ctrlKey;
+  var forbidden = { u:1, s:1, c:1, x:1, i:1 };
+
+  if ((isCtrl && forbidden[key]) || e.key === 'F12') e.preventDefault();
+});
+if (qcadsPopup) {
+  qcadsPopup.style.userSelect = 'none';
+  qcadsPopup.addEventListener('copy', function (e) { e.preventDefault(); });
+  qcadsPopup.addEventListener('cut', function (e) { e.preventDefault(); });
+}
+</script>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  if (typeof confetti === 'undefined') return;
+
+  var fxCanvas = document.createElement('canvas');
+  fxCanvas.id = 'qcads-tet-fx';
+  fxCanvas.style.cssText =
+    'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:180000;';
+  document.body.appendChild(fxCanvas);
+
+  var myConfetti = confetti.create(fxCanvas, { resize: true, useWorker: true });
+
+  // đổi "🌸" -> "🌼", hoặc "💮"
+  var blossomShape = (myConfetti.shapeFromText)
+    ? myConfetti.shapeFromText({ text: '🌼', scalar: 1.15 })
+    : 'circle';
+
+  var rainTimer = null;
+  var fireTimer = null;
+
+  function blossomRainTick() {
+    myConfetti({
+      particleCount: 2,
+      angle: 90,
+      spread: 55,
+      startVelocity: 0,
+      ticks: 320,
+      origin: { x: Math.random(), y: -0.08 },
+      gravity: 0.33,
+      drift: (Math.random() - 0.5) * 0.7,
+      scalar: 1.05,
+      shapes: [blossomShape]
+    });
+  }
+
+  function fireworkBurst() {
+    var x = Math.random() * 0.78 + 0.11;
+    var y = Math.random() * 0.25 + 0.18;
+
+    myConfetti({
+      particleCount: 110,
+      startVelocity: 58,
+      spread: 360,
+      ticks: 240,
+      origin: { x: x, y: y },
+      scalar: 0.95,
+      colors: ['#ffde59', '#ff3b3b', '#ffd166', '#ffffff', '#ff9ad5']
+    });
+
+    myConfetti({
+      particleCount: 28,
+      startVelocity: 32,
+      spread: 220,
+      ticks: 180,
+      origin: { x: x, y: y },
+      scalar: 0.7,
+      colors: ['#fff7c2', '#ffffff']
+    });
+  }
+
+  function startTetFX() {
+    if (rainTimer || fireTimer) return;
+    rainTimer = setInterval(blossomRainTick, 120);
+    fireTimer = setInterval(fireworkBurst, 2300);
+  }
+
+  function stopTetFX() {
+    if (rainTimer) { clearInterval(rainTimer); rainTimer = null; }
+    if (fireTimer) { clearInterval(fireTimer); fireTimer = null; }
+    try {
+      var ctx = fxCanvas.getContext('2d');
+      ctx && ctx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
+    } catch(e) {}
+  }
+
+  window.qcadsTetFX_start = startTetFX;
+  window.qcadsTetFX_stop  = stopTetFX;
+
+  var _show = window.showPopup;
+  window.showPopup = function () {
+    if (typeof _show === 'function') _show();
+    startTetFX();
+  };
+
+  var _hide = window.qcadsHidePopup;
+  window.qcadsHidePopup = function () {
+    if (typeof _hide === 'function') _hide();
+    stopTetFX();
+  };
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stopTetFX();
+    else {
+      var popup = document.getElementById('qcadsPopup');
+      if (popup && popup.style.display === 'flex') startTetFX();
+    }
+  });
+
+})();
 </script>
 
 </body>
