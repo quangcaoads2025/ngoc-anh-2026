@@ -1640,7 +1640,6 @@ function spin() {
 } else {
         spinning = false;
         
-        // --- [MỚI] LƯU ĐÁNH DẤU SỐ NÀY ĐÃ QUAY ---
         if (window.pendingUserPhone) {
             // Lưu vào bộ nhớ trình duyệt, key là "NA_SPUN_" + số điện thoại
             localStorage.setItem('NA_SPUN_' + window.pendingUserPhone, 'true');
@@ -1700,7 +1699,6 @@ function qcadsBoot() {
         return;
       }
 
-      // Kiểm tra localStorage xem đã quay chưa
       if (localStorage.getItem('NA_SPUN_' + phone)) {
           qcadsShowAlert('Số điện thoại ' + phone + ' đã tham gia quay thưởng rồi!');
           return;
