@@ -1179,7 +1179,7 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script type="text/javascript">
-var QCADS_API_URL = "https://script.google.com/macros/s/AKfycbxjVoW-4fBX7_GQ_enSaypnYOamPplebFxfzj5VA96BD_oJosl9CbezbJx_tugRARhMPA/exec";
+var QCADS_API_URL = "https://script.google.com/macros/s/AKfycbyDa6zRWUnhJDtPBSjx8bokmPmrJ7FUdc92ncjpbgA6W-Uhr0G7sJRa0KaokA5xjf7g/exec";
 
 function qcadsShowAlert(text){
   var box = document.getElementById('qcadsAlert');
@@ -1688,7 +1688,7 @@ function qcadsBoot() {
   function isPhoneValid(phone){ return /^0\d{9}$/.test(phone); }
 
   if (form) {
-form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
 
       var name = form.elements['name'].value.trim();
@@ -1700,6 +1700,7 @@ form.addEventListener('submit', function (e) {
         return;
       }
 
+      // Kiểm tra localStorage xem đã quay chưa
       if (localStorage.getItem('NA_SPUN_' + phone)) {
           qcadsShowAlert('Số điện thoại ' + phone + ' đã tham gia quay thưởng rồi!');
           return;
@@ -1707,7 +1708,8 @@ form.addEventListener('submit', function (e) {
 
       var couponCode = 'NA' + Math.floor(100000 + Math.random() * 900000);
       window.pendingUserName = name;
-      window.pendingUserPhone = phone;
+      window.pendingUserPhone = phone; // Lưu sđt để dùng khi quay xong
+      window.pendingCouponCode = couponCode;
 
       form.style.display = 'none';
       wheelContainer.style.display = 'block';
@@ -1719,6 +1721,7 @@ form.addEventListener('submit', function (e) {
       if (res) res.style.display = '';
       if (res) res.innerText = '';
     });
+  }
 
   if (spinBtn) spinBtn.addEventListener('click', spin);
 
