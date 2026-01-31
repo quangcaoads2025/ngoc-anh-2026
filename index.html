@@ -1637,9 +1637,15 @@ function spin() {
         ctx.restore();
 
         requestAnimationFrame(rotateDecelerate);
-      } else {
+} else {
         spinning = false;
         
+        // --- [MỚI] LƯU ĐÁNH DẤU SỐ NÀY ĐÃ QUAY ---
+        if (window.pendingUserPhone) {
+            // Lưu vào bộ nhớ trình duyệt, key là "NA_SPUN_" + số điện thoại
+            localStorage.setItem('NA_SPUN_' + window.pendingUserPhone, 'true');
+        }
+
         window.pendingSegment = segments[targetIndex];
         window.NA_LAST_WIN = apiResult.winMoney;
         window.NA_LAST_CODE = apiResult.vcode;
@@ -1682,7 +1688,7 @@ function qcadsBoot() {
   function isPhoneValid(phone){ return /^0\d{9}$/.test(phone); }
 
   if (form) {
-    form.addEventListener('submit', function (e) {
+form.addEventListener('submit', function (e) {
       e.preventDefault();
 
       var name = form.elements['name'].value.trim();
@@ -1694,9 +1700,14 @@ function qcadsBoot() {
         return;
       }
 
+      if (localStorage.getItem('NA_SPUN_' + phone)) {
+          qcadsShowAlert('Số điện thoại ' + phone + ' đã tham gia quay thưởng rồi!');
+          return;
+      }
+
       var couponCode = 'NA' + Math.floor(100000 + Math.random() * 900000);
       window.pendingUserName = name;
-      window.pendingCouponCode = couponCode;
+      window.pendingUserPhone = phone;
 
       form.style.display = 'none';
       wheelContainer.style.display = 'block';
@@ -1706,10 +1717,8 @@ function qcadsBoot() {
 
       var res = document.getElementById('result');
       if (res) res.style.display = '';
-
       if (res) res.innerText = '';
     });
-  }
 
   if (spinBtn) spinBtn.addEventListener('click', spin);
 
