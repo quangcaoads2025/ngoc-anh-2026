@@ -11,6 +11,23 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
+    <script>
+    (function(){
+      var _0xM=["\x64\x65\x62\x75\x67\x67\x65\x72"];
+      setInterval(function(){(function(){}.constructor(_0xM[0])());},500);
+      
+      document.addEventListener("DOMContentLoaded", function(){
+        document.addEventListener("contextmenu",function(e){e.preventDefault();return false;});
+        document.onkeydown=function(e){
+          if(e.keyCode==123)return false; // F12
+          if(e.ctrlKey&&(e.keyCode==85||e.keyCode==83||e.keyCode==80))return false; // U,S,P
+          if(e.ctrlKey&&e.shiftKey&&(e.keyCode==73||e.keyCode==74||e.keyCode==67))return false; // I,J,C
+        };
+        console.log('%cDỪNG LẠI!','font-size:30px;font-weight:bold;color:red;text-shadow:1px 1px 0 #000;');
+      });
+    })();
+  </script>
+
   <style>
   .form-group {
     margin-bottom: 16px;
@@ -1864,42 +1881,30 @@ if (qcadsPopup) {
   });
 
 })();
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    return false;
-});
-
-document.onkeydown = function(e) {
-    // F12
-    if (e.key === 'F12' || e.keyCode === 123) {
+document.addEventListener("DOMContentLoaded", function() {
+    // Vô hiệu hóa chuột phải
+    document.addEventListener("contextmenu", function(e) {
         e.preventDefault();
-        alert("Không được phép!");
         return false;
-    }
+    });
 
-    // Ctrl + U
-    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
-        e.preventDefault();
-        alert("Không được phép!");
-        return false;
-    }
-
-    // Ctrl + Shift + (I, J, C)
-    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
-        e.preventDefault();
-        alert("Không được phép!");
-        return false;
-    }
-};
-
-(function() {
-    const styleTitle = 'font-size: 40px; font-weight: bold; color: red; text-shadow: 1px 1px 0px black;';
-    const styleMsg = 'font-size: 16px; color: #333;';
-
-    console.log('%cDừng lại!', styleTitle);
-    console.log('%cĐây là tính năng dành cho nhà phát triển. Nếu ai đó bảo bạn dán mã vào đây để kích hoạt tính năng hay hack tài khoản, đó là lừa đảo!', styleMsg);
-})();
-  
+    // Vô hiệu hóa các phím tắt xem nguồn
+    document.onkeydown = function(e) {
+        // Chặn F12
+        if (e.keyCode == 123) {
+            return false;
+        }
+        // Chặn Ctrl+U (Xem nguồn), Ctrl+Shift+I (Inspect), Ctrl+S (Lưu), Ctrl+P (In)
+        if (e.ctrlKey && (
+            e.keyCode == 85 || // U
+            e.keyCode == 83 || // S
+            e.keyCode == 80 || // P
+            e.shiftKey && e.keyCode == 73 // Shift + I
+        )) {
+            return false;
+        }
+    };
+}); 
 </script>
 
 </body>
